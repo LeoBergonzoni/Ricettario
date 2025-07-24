@@ -1,0 +1,4 @@
+# Ignora file di ambiente e output locali
+.env
+node_modules/
+dist/

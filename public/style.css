@@ -1,0 +1,90 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fff8f0;
+    color: #4b2e2e;
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff3e6;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #e57f3a;
+  }
+  
+  .description {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  #ingredient-fields input {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e0b396;
+    border-radius: 8px;
+  }
+  
+  #add-ingredient {
+    align-self: start;
+    background-color: #ffddb0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  select, button {
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+  }
+  
+  #generate-recipe {
+    background-color: #e57f3a;
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  #recipe-output {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px dashed #e57f3a;
+  }
+  
+  .actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .actions button {
+    background-color: #f0c28b;
+    color: #4b2e2e;
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  .hidden {
+    display: none;
+  }

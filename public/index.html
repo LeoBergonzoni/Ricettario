@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Il Ricettario</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>🍝 Il Ricettario</h1>
+    <p class="description">
+      Non sai cosa preparare? Scrivici cos’hai in frigo o in credenza e ti daremo una semplice ricetta da preparare in pochi minuti.
+    </p>
+
+    <form id="ingredients-form">
+      <div id="ingredient-fields">
+        <input type="text" name="ingredient" placeholder="Ingrediente 1" required />
+        <input type="text" name="ingredient" placeholder="Ingrediente 2" required />
+      </div>
+      <button type="button" id="add-ingredient">➕</button>
+
+      <label for="location">Dove la mangi?</label>
+      <select id="location" required>
+        <option value="a casa (calda)">A casa (calda)</option>
+        <option value="da portare in ufficio">Da portare in ufficio</option>
+      </select>
+
+      <button type="submit" id="generate-recipe">🍳 Prepara</button>
+    </form>
+
+    <div id="recipe-output" class="hidden">
+      <h2>🍽️ La tua ricetta</h2>
+      <div id="recipe-text"></div>
+      <div class="actions">
+        <button id="new-recipe">🔁 Nuova ricetta</button>
+        <button id="copy-recipe">📋 Copia</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
