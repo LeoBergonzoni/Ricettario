@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-exports.handler = async function (event, context) {
+exports.handler = async function (event) {
   const { ingredients, location } = JSON.parse(event.body);
 
   const prompt = `Genera una ricetta semplice e veloce da preparare con ${ingredients.join(", ")} da mangiare ${location}. Scarta pure alcuni ingredienti che ti ho detto se non sono consoni ad una ricetta. Dimmi gli ingredienti necessari e i passaggi in maniera più semplice possibile.`;
@@ -28,7 +28,7 @@ exports.handler = async function (event, context) {
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Errore nel server o nella chiamata API." }),
+      body: JSON.stringify({ error: "Errore nella funzione o nella chiamata API." }),
     };
   }
 };
