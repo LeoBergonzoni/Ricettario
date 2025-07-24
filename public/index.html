@@ -19,7 +19,11 @@
         <input type="text" name="ingredient" placeholder="Ingrediente 1" required />
         <input type="text" name="ingredient" placeholder="Ingrediente 2" required />
       </div>
-      <button type="button" id="add-ingredient">➕</button>
+
+      <div class="ingredient-buttons">
+        <button type="button" id="add-ingredient">➕</button>
+        <button type="button" id="remove-ingredient">➖</button>
+      </div>
 
       <label for="location">Dove la mangi?</label>
       <select id="location" required>
@@ -31,7 +35,7 @@
     </form>
 
     <div id="recipe-output" class="hidden">
-      <h2>🍽️ La tua ricetta</h2>
+      <h2></h2> <!-- Titolo ricetta generato -->
       <div id="recipe-text"></div>
       <div class="actions">
         <button id="new-recipe">🔁 Nuova ricetta</button>

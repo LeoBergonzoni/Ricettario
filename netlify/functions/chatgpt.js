@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 exports.handler = async function (event) {
   const { ingredients, location } = JSON.parse(event.body);
 
-  const prompt = `Genera una ricetta semplice e veloce da preparare con ${ingredients.join(", ")} da mangiare ${location}. Scarta pure alcuni ingredienti che ti ho detto se non sono consoni ad una ricetta. Dimmi gli ingredienti necessari e i passaggi in maniera più semplice possibile.`;
+  const prompt = `Genera una ricetta semplice e veloce da preparare con ${ingredients.join(", ")} da mangiare ${location}. Scarta pure alcuni ingredienti che ti ho detto se non sono consoni ad una ricetta. Dammi prima il titolo della ricetta in una singola riga, poi gli ingredienti necessari e infine i passaggi in maniera più semplice possibile. Usa uno stile semplice, come una ricetta da blog.`;
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -21,6 +21,7 @@ exports.handler = async function (event) {
 
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content || "Errore nella generazione della ricetta.";
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: content }),

@@ -1,13 +1,16 @@
 const ingredientContainer = document.getElementById("ingredient-fields");
 const addButton = document.getElementById("add-ingredient");
+const removeButton = document.getElementById("remove-ingredient");
 const form = document.getElementById("ingredients-form");
 const locationSelect = document.getElementById("location");
 const recipeOutput = document.getElementById("recipe-output");
+const recipeTitle = document.querySelector("#recipe-output h2");
 const recipeText = document.getElementById("recipe-text");
 const newRecipeBtn = document.getElementById("new-recipe");
 const copyBtn = document.getElementById("copy-recipe");
 
 let maxIngredients = 10;
+let minIngredients = 2;
 
 addButton.addEventListener("click", () => {
   const currentInputs = ingredientContainer.querySelectorAll("input").length;
@@ -18,6 +21,13 @@ addButton.addEventListener("click", () => {
     input.placeholder = `Ingrediente ${currentInputs + 1}`;
     input.required = true;
     ingredientContainer.appendChild(input);
+  }
+});
+
+removeButton.addEventListener("click", () => {
+  const inputs = ingredientContainer.querySelectorAll("input");
+  if (inputs.length > minIngredients) {
+    ingredientContainer.removeChild(inputs[inputs.length - 1]);
   }
 });
 
@@ -44,10 +54,18 @@ form.addEventListener("submit", async (e) => {
   const location = locationSelect.value;
 
   recipeText.textContent = "🍳 Sto preparando la ricetta...";
+  recipeTitle.textContent = "";
   recipeOutput.classList.remove("hidden");
 
   const recipe = await fetchRecipe(ingredients, location);
-  recipeText.textContent = recipe;
+
+  // Estrai titolo e corpo della ricetta
+  const [titleLine, ...rest] = recipe.split('\n');
+  const cleanTitle = titleLine.replace(/^["#*\- ]+/, '').trim(); // rimuove eventuali simboli Markdown
+  const body = rest.join('\n').trim();
+
+  recipeTitle.textContent = `🍽️ ${cleanTitle}`;
+  recipeText.textContent = body;
 });
 
 newRecipeBtn.addEventListener("click", () => {
@@ -55,6 +73,7 @@ newRecipeBtn.addEventListener("click", () => {
 });
 
 copyBtn.addEventListener("click", () => {
-  navigator.clipboard.writeText(recipeText.textContent);
+  const fullText = `${recipeTitle.textContent}\n\n${recipeText.textContent}`;
+  navigator.clipboard.writeText(fullText);
   alert("Ricetta copiata! 📋");
 });

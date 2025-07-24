@@ -85,6 +85,12 @@ body {
     flex: 1;
   }
   
+  .ingredient-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
   .hidden {
     display: none;
   }
