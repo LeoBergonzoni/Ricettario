@@ -137,3 +137,58 @@ select, button {
     width: 100%;
   }
 }
+
+/* Cookie banner responsive */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff3e6;
+  color: #4b2e2e;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#cookie-banner button {
+  background-color: #e57f3a;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Migliora layout su schermi larghi */
+@media (min-width: 500px) {
+  #cookie-banner {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #cookie-banner button {
+    margin-left: 1rem;
+  }
+}
+footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #a47b63;
+  margin: 2rem auto 1rem;
+  max-width: 600px;
+  padding: 0 1rem;
+}
+
+@media (max-width: 480px) {
+  footer {
+    font-size: 0.7rem;
+  }
+}
