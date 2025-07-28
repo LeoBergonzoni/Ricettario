@@ -5,15 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Il Ricettario</title>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5DDHVS0V6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-E5DDHVS0V6');
-  </script>
-
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -53,6 +44,43 @@
       </div>
     </div>
   </div>
+
+  <!-- Cookie banner -->
+  <div id="cookie-banner" style="position:fixed; bottom:0; width:100%; background:#222; color:#fff; padding:1rem; text-align:center; font-size:0.9rem; z-index:1000;">
+    Questo sito utilizza Google Analytics 4 per raccogliere dati anonimi. 
+    <button onclick="acceptCookies()" style="margin-left:10px; padding:0.5rem 1rem; background:#fff; color:#000; border:none; border-radius:6px; cursor:pointer;">Accetta</button>
+  </div>
+
+  <script>
+    function enableAnalytics() {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = "https://www.googletagmanager.com/gtag/js?id=G-E5DDHVS0V6";
+      document.head.appendChild(script1);
+
+      const script2 = document.createElement('script');
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E5DDHVS0V6');
+      `;
+      document.head.appendChild(script2);
+    }
+
+    function acceptCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('analyticsAccepted', 'true');
+      enableAnalytics();
+    }
+
+    window.onload = function() {
+      if (localStorage.getItem('analyticsAccepted') === 'true') {
+        document.getElementById('cookie-banner').style.display = 'none';
+        enableAnalytics();
+      }
+    };
+  </script>
 
   <script src="script.js"></script>
 </body>
